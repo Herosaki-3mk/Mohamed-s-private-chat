@@ -1,0 +1,374 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #eef1f5;
+  color: #000;
+  transition: background 0.3s, color 0.3s;
+}
+
+#container {
+  display: flex;
+  height: 95vh; /* slightly shorter */
+  gap: 10px;
+  padding: 10px;
+}
+
+/* Panels */
+#userPanel, #chatPanel {
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  overflow: hidden;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* User panel */
+#userPanel {
+  width: 250px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+}
+
+/* --- Current User Card --- */
+#currentUser {
+  display: flex;
+  align-items: center;
+  padding: 14px;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #4CAF50, #66bb6a);
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#currentUser:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+}
+
+#currentUser img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  margin-right: 12px;
+  border: 2px solid white;
+}
+
+#currentUserName {
+  font-size: 16px;
+  display: block;
+}
+
+#currentUser .user-label {
+  font-size: 12px;
+  margin: 2px 0 0;
+  opacity: 0.9;
+}
+
+/* Dark mode for current user card */
+body.dark #currentUser {
+  background: linear-gradient(135deg, #388e3c, #2e7d32);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+}
+
+#userPanel h2 {
+  margin: 0 0 15px 0;
+  font-weight: 600;
+}
+
+/* Search bar */
+#searchBar {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+#searchInput {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 25px 0 0 25px;
+  outline: none;
+  background: #fafafa;
+}
+
+#searchBtn {
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-left: none;
+  background: #4CAF50;
+  color: white;
+  border-radius: 0 25px 25px 0;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-size: 16px;
+}
+
+#searchBtn i {
+  pointer-events: none;
+  font-size: 16px;
+}
+
+#searchBtn:hover {
+  background: #43a047;
+}
+
+/* User list */
+#userList {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+.user-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 8px;
+  border-radius: 15px;
+  background: #f9f9f9;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.user-item:hover {
+  background: #ececec;
+  transform: scale(1.02);
+}
+
+.user-item img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  margin-right: 12px;
+}
+
+/* Bottom controls */
+#bottomControls {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+#logoutBtn, #themeToggle {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-size: 16px;
+}
+
+#logoutBtn {
+  background: #ff4d4d;
+  color: white;
+}
+
+#logoutBtn:hover {
+  background: #e60000;
+}
+
+#themeToggle {
+  background: #ddd;
+  color: #333;
+}
+
+#themeToggle i {
+  pointer-events: none;
+  font-size: 18px;
+}
+
+#themeToggle:hover {
+  background: #ccc;
+}
+
+/* Chat panel */
+#chatPanel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+}
+
+/* Chat header */
+#chatHeader {
+  padding: 15px;
+  background: #fdfdfd;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+}
+
+#chatWithPhoto {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  margin-right: 12px;
+}
+
+#chatWith {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+/* Messages */
+#messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.message {
+  display: flex;
+  align-items: flex-start;
+  max-width: 65%;
+}
+
+.message.you {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+
+.msg-photo {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  margin: 0 8px;
+}
+
+.msg-text {
+  background: #e8f0fe;
+  padding: 10px 15px;
+  border-radius: 20px;
+  font-size: 14px;
+  line-height: 1.4;
+  word-wrap: break-word;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.message.you .msg-text {
+  background: #c8e6c9;
+}
+
+/* Input bar */
+#messageInputBar {
+  display: flex;
+  border-top: 1px solid #eee;
+  padding: 12px;
+  background: #fdfdfd;
+  gap: 10px;
+}
+
+#msgInput {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  outline: none;
+  background: #fafafa;
+}
+
+#sendBtn {
+  padding: 12px 22px;
+  border: none;
+  background: #4CAF50;
+  color: white;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+#sendBtn:hover {
+  background: #43a047;
+}
+
+/* Login overlay */
+#login {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(240,240,240,0.95);
+  z-index: 10;
+}
+
+#login button {
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 30px;
+  border: none;
+  background: #4CAF50;
+  color: white;
+}
+
+/* DARK MODE */
+body.dark {
+  background: #121212;
+  color: #fff;
+}
+
+body.dark #userPanel,
+body.dark #chatPanel {
+  background: #1e1e1e;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+body.dark #chatHeader,
+body.dark #messageInputBar {
+  background: #222;
+  border-color: #333;
+}
+
+body.dark input,
+body.dark #msgInput {
+  background: #2a2a2a;
+  color: #fff;
+  border: 1px solid #444;
+}
+
+body.dark #messages .msg-text {
+  background: #2d2d2d;
+  color: #fff;
+}
+
+body.dark .message.you .msg-text {
+  background: #006400; /* dark green */
+  color: #fff;
+}
+
+body.dark .user-item {
+  background: #2a2a2a;
+}
+
+body.dark .user-item:hover {
+  background: #333;
+}
+
+body.dark #themeToggle {
+  background: #444;
+  color: #fff;
+}
+
+body.dark #themeToggle:hover {
+  background: #555;
+}
+
+/* Dark mode - your messages */
+body.dark .message.you .msg-text {
+  background: #446144 !important; /* deeper dark green */
+  color: #fff !important;
+}
